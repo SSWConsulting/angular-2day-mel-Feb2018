@@ -13,7 +13,7 @@ export class CompanyService {
   ) {
    }
 
-  API_BASE = 'http://firebootcamp-crm-api.azurewebsites.net/apifgh';
+  API_BASE = 'http://firebootcamp-crm-api.azurewebsites.net/api';
 
   companies: Company[];
 
@@ -24,6 +24,10 @@ export class CompanyService {
       tap(t => console.log('tap!', t)),
       catchError(this.errorHandler)
     );
+  }
+
+  deleteCompany(companyId: number): Observable<Company> {
+      return this.httpClient.delete<Company>(`${this.API_BASE}/company/${companyId}`);
   }
 
 

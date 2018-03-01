@@ -17,12 +17,22 @@ export class CompanyListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCompanies();
+  }
+
+  getCompanies() {
     this.companyService.getCompanies()
     .subscribe(
       next => this.companies = next,
       error => console.error('error caught in component', error),
       () => console.log('complete')
     );
+  }
+
+
+  deleteCompany(toDelete: Company) {
+    this.companyService.deleteCompany(toDelete.id)
+      .subscribe(c => this.getCompanies());
   }
 
 
