@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Company } from './company';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { catchError, tap } from 'rxjs/operators';
@@ -27,12 +27,18 @@ export class CompanyService {
   }
 
   deleteCompany(companyId: number): Observable<Company> {
-
       return this.httpClient.delete<Company>(`${this.API_BASE}/company/${companyId}`);
   }
 
+  addCompany(company: Company): Observable<Company> {
+    return this.httpClient.post<Company>(
+      `${this.API_BASE}/company`, company,
+      { headers: new HttpHeaders().set('content-type', 'application/json') }
+    ).pipe(catchError(this.errorHandler));
+  }
 
-  private errorHandler(error: Error): Observable<Company[]> {
+
+  private errorHandler(error: Error): Observable<any> {
     console.error('error caught in service');
     return new EmptyObservable();
   }
