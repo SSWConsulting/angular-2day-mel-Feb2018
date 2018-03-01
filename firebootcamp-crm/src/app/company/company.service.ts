@@ -19,18 +19,5 @@ export class CompanyService {
   getCompanies(): Observable<Company[]> {
     return this.httpClient.get<Company[]>(`${this.API_BASE}/company`);
   }
-    // return [
-    //   {
-    //      name: 'SSW',
-    //      email: 'info@ssw.com.au',
-    //      phone: 1234
-    //   },
-    //   {
-    //     name: 'Microsoft',
-    //     email: 'info@microsoft.com',
-    //     phone: 543221
-    //  },
-    // ];
-  //}
 
 }
