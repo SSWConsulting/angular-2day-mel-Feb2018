@@ -16,7 +16,7 @@
       <td>{{ company.phone}} </td>
       <td>
         <button class="btn btn-default" (click)="deleteCompany(company)">Delete</button>
-        <button class="btn btn-default">Edit</button>
+        <button class="btn btn-default" [routerLink]="['/company/edit', company.id]">Edit</button>
       </td>
     </tr>
   </tbody>
