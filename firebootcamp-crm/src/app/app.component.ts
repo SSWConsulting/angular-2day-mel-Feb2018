@@ -8,9 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'fbc';
 
-valueChanged(event) {
-  console.log('value changed');
-  this.title = event.target.value;
-}
-
 }
