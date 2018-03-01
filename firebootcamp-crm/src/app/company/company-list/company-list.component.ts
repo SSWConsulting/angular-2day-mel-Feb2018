@@ -20,7 +20,7 @@ export class CompanyListComponent implements OnInit {
     this.companyService.getCompanies()
     .subscribe(
       next => this.companies = next,
-      error => console.error(error),
+      error => console.error('error caught in component', error),
       () => console.log('complete')
     );
   }
