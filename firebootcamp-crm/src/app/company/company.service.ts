@@ -27,6 +27,7 @@ export class CompanyService {
   }
 
   deleteCompany(companyId: number): Observable<Company> {
+
       return this.httpClient.delete<Company>(`${this.API_BASE}/company/${companyId}`);
   }
 

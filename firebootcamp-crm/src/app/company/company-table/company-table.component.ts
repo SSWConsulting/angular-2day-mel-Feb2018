@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Company } from '../company';
 import { Subscription } from 'rxjs/Subscription';
 import { takeWhile } from 'rxjs/operators/takeWhile';
+
 
 @Component({
   selector: 'fbc-company-table',
@@ -15,6 +16,10 @@ export class CompanyTableComponent implements OnInit, OnDestroy {
   @Input()
   companies$: Observable<Company[]>;
 
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output()
+  onDeleteCompany = new EventEmitter<Company>();
+
 
   constructor() { }
 
@@ -25,9 +30,8 @@ export class CompanyTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
 
-  deleteCompany(toDelete: Company)
-  {
-    console.error('DELETE no implemented');
+  deleteCompany(toDelete: Company) {
+    this.onDeleteCompany.emit(toDelete);
   }
 
 
