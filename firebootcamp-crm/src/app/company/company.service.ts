@@ -3,7 +3,8 @@ import { Company } from './company';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators/catchError';
+import { tap } from 'rxjs/operators/tap';
 
 @Injectable()
 export class CompanyService {
