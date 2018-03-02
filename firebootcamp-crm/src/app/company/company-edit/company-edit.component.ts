@@ -31,6 +31,15 @@ export class CompanyEditComponent implements OnInit {
       this.getCompany();
     }
 
+    this.companyForm.get('checkPhone').valueChanges
+      .subscribe(value => {
+        if (value) {
+          this.companyForm.get('phone').setValidators(Validators.required)
+        } else {
+          this.companyForm.get('phone').clearValidators();
+        }
+        this.companyForm.get('phone').updateValueAndValidity();
+      });
   }
 
 
@@ -44,7 +53,8 @@ export class CompanyEditComponent implements OnInit {
     this.companyForm = this.fb.group({
       name: ['', Validators.required],
       phone: [''],
-      email: ['']
+      email: [''],
+      checkPhone: []
     });
   }
 
